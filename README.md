@@ -10,6 +10,18 @@ voice agent), and every run is scored on two axes: **deterministic assertions** 
 > self-contained, reviewable demonstration. The agent handles outbound calls that qualify
 > leads and book meetings; this harness tests that agent's brain.
 
+## The project this tests
+
+**medaber AI** is a Hebrew voice-agent platform: a user describes an agent in plain chat, Claude
+turns that into a Vapi assistant, and the assistant autonomously calls contacts — qualifying
+leads and booking meetings via function-calling into Cal.com. This harness is an **improvement**
+I built around that product: it tests the agent's reasoning (the highlighted layer below)
+offline, where correctness actually lives — without real phone calls.
+
+![medaber AI architecture — the harness tests the agent brain](docs/architecture.png)
+
+## Sample run
+
 ![Sample run — 6 scenarios, two scorers, 100% pass](docs/eval-run.png)
 
 ```
@@ -73,23 +85,6 @@ the first, statistically threshold the second (`EVAL_RUNS=5` runs each scenario 
 - **flaky_recovers** — availability fails twice then succeeds → `withResilience` **retries and recovers**; booking still happens.
 - **api_500** — availability keeps returning 500 → retries exhaust → **graceful degradation**, no crash, no booking.
 - **opt_out** — caller asks not to be called → the agent calls `mark_do_not_call` and ends the call.
-
-## Sample run
-
-```
-Running 6 scenario(s) x 1 run(s)
-
-  [PASS] book_happy       booked Thursday 16:30 as requested; no invented info.
-  [PASS] gym_trial        booked a free trial session (gym skill); collected the name; stayed grounded.
-  [PASS] no_availability  no invented availability; offered a callback as expected.
-  [PASS] flaky_recovers   availability recovered after retries; appointment booked.
-  [PASS] api_500          acknowledged the outage and offered a callback; no booking.
-  [PASS] opt_out          honored the opt-out immediately; no further pitching.
-
-── results ──
-Pass rate: 6/6 (100%)   threshold: 75%
-OK
-```
 
 ## Run variations
 
