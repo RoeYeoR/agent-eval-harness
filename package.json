@@ -1,0 +1,18 @@
+{
+  "name": "agent-eval-harness",
+  "version": "1.0.0",
+  "description": "An eval & simulation harness for an LLM voice agent: a simulated caller runs scripted scenarios against the real agent (prompt + tools + loop); each run is scored by deterministic assertions plus an LLM-as-judge, and the suite gates CI via its exit code.",
+  "scripts": {
+    "eval": "tsx run.ts"
+  },
+  "keywords": ["llm", "agents", "evals", "llm-as-judge", "anthropic", "tool-use", "testing"],
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.116.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
