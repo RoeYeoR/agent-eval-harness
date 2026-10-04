@@ -12,13 +12,13 @@ voice agent), and every run is scored on two axes: **deterministic assertions** 
 
 ## The project this tests
 
-**medaber AI** is a Hebrew voice-agent platform: a user describes an agent in plain chat, Claude
-turns that into a Vapi assistant, and the assistant autonomously calls contacts — qualifying
-leads and booking meetings via function-calling into Cal.com. This harness is an **improvement**
-I built around that product: it tests the agent's reasoning (the highlighted layer below)
-offline, where correctness actually lives — without real phone calls.
+It's a Hebrew voice-agent platform: a user describes an agent in plain chat, Claude turns that
+into a Vapi assistant, and the assistant autonomously calls contacts — qualifying leads and
+booking meetings via function-calling into Cal.com. This harness is an **improvement** I built
+around that product: it tests the agent's reasoning (the highlighted layer below) offline, where
+correctness actually lives — without real phone calls.
 
-![medaber AI architecture — the harness tests the agent brain](docs/architecture.png)
+![Voice-agent architecture — the harness tests the agent brain](docs/architecture.png)
 
 ## Sample run
 
